@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  version: 0.0.1
+  title: Leagueify Billing API
+  summary: Open Source Sporting League Platform.
+  description: '
+    The Leagueify Billing is responsible for managing user
+    authentication, authorization, and profiles.
+    '
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/Leagueify/billing/main/LICENSE
+  contact:
+    name: Leagueify Support
+    url: https://github.com/Leagueify/billing/issues
+
+servers:
+  - url: http://localhost:6507/billing
+    description: DIRECT -- Local Docker Development
+  - url: http://localhost/billing
+    description: PROXY -- Local Docker Development
+  - url: http://localhost/api/billing
+    description: PREFIX PROXY -- Local Docker Development
+
+
+paths:
+  /healthz:
+    get:
+      tags:
+      - Health Check
+      summary: Billing Service Health Check
+      description: '
+        Check the health status of the Leagueify Billing service. This
+        endpoint should return the service name and a status of ok.
+        '
+      responses:
+        200:
+          description: Health Check Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service:
+                    description: Service Name
+                    type: string
+                    example: billing
+                  status:
+                    description: Server HTTP Status
+                    type: string
+                    example: ok
