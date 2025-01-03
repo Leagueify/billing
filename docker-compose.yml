@@ -1,0 +1,12 @@
+services:
+  leagueify-billing:
+    image: leagueify-billing-dev
+    build:
+      context: .
+      target: dev
+    command: air
+    ports:
+      - 6507:6507
+    volumes:
+      - ./:/app
+    restart: always
